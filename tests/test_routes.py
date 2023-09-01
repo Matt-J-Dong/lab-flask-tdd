@@ -30,7 +30,7 @@ from unittest import TestCase
 
 # from unittest.mock import MagicMock, patch
 from urllib.parse import quote_plus
-from service import app
+from wsgi import app
 from service.common import status
 from service.models import db, init_db, Pet
 from tests.factories import PetFactory

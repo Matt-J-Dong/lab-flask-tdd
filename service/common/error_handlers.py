@@ -14,10 +14,11 @@
 """
 Module: error_handlers
 """
-from flask import jsonify
+from flask import jsonify, current_app
 from service.models import DataValidationError
-from service import app
 from . import status
+
+app = current_app
 
 
 ######################################################################

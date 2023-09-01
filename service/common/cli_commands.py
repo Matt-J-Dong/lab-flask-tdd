@@ -1,8 +1,10 @@
 """
 Flask CLI Command Extensions
 """
-from service import app
+from flask import current_app
 from service.models import db
+
+app = current_app
 
 
 ######################################################################

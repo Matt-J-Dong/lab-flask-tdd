@@ -29,7 +29,7 @@ import unittest
 from datetime import date
 from werkzeug.exceptions import NotFound
 from service.models import Pet, Gender, DataValidationError, db
-from service import app
+from wsgi import app
 from tests.factories import PetFactory
 
 DATABASE_URI = os.getenv(

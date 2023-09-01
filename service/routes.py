@@ -24,10 +24,12 @@ PUT /pets/{id} - updates a Pet record in the database
 DELETE /pets/{id} - deletes a Pet record in the database
 """
 
-from flask import jsonify, request, url_for, abort
+from flask import jsonify, request, url_for, abort, current_app
 from service.models import Pet
 from service.common import status  # HTTP Status Codes
-from . import app  # Import Flask application
+
+# Import Flask application
+app = current_app
 
 
 ######################################################################
