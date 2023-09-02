@@ -22,12 +22,13 @@ import sys
 from flask import Flask
 from service import config
 from service.common import log_handlers
+from service.models import db
 
 
 ######################################################################
 # Flask Application Factory
 ######################################################################
-def create_app():
+def create_app(test_config=None):
     """Initialize the core application."""
     # Create Flask application
     app = Flask(__name__)
@@ -36,10 +37,12 @@ def create_app():
     # Set up logging for production
     log_handlers.init_logging(app, "gunicorn.error")
 
+    # Check for test database config
+    if test_config is not None:
+        app.config.from_mapping(test_config)
+
     # Initialize Plugins like SQlAlchemy
     try:
-        # pylint: disable=import-outside-toplevel
-        from service.models import db
         db.init_app(app)
     except Exception as error:  # pylint: disable=broad-except
         app.logger.critical("%s: Cannot continue", error)
@@ -51,6 +54,9 @@ def create_app():
         # pylint: disable=import-outside-toplevel,unused-import
         from service import routes, models
         from service.common import error_handlers, cli_commands
+
+        # Create the SQLAlchemy tables if the don't exist
+        db.create_all()
 
         app.logger.info(70 * "*")
         app.logger.info("  P E T   S T O R E   S E R V I C E  ".center(70, "*"))
