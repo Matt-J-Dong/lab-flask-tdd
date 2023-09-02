@@ -33,5 +33,5 @@
 		}
 	},
 	//"forwardPorts": [8000],
-	// "postCreateCommand": ""
+	"postCreateCommand": "sudo poetry config virtualenvs.create false; sudo poetry install"
 }
