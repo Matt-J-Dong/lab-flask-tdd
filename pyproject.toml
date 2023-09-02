@@ -37,7 +37,7 @@ disable = "no-member,protected-access,global-statement"
 
 [tool.pytest.ini_options]
 minversion = "6.0"
-addopts = "--pspec --cov=service --disable-warnings"
+addopts = "--pspec --cov=service"
 testpaths = ["tests"]
 
 [tool.coverage.run]
