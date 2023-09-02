@@ -9,7 +9,7 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "^3.11"
 Flask = "^2.3.3"
-Flask-SQLAlchemy = "^3.0.5"
+Flask-SQLAlchemy = "3.0.2"
 python-dotenv = "^1.0.0"
 gunicorn = "^21.2.0"
 sqlalchemy = "2.0.0"
@@ -37,7 +37,7 @@ disable = "no-member,protected-access,global-statement"
 
 [tool.pytest.ini_options]
 minversion = "6.0"
-addopts = "--pspec --cov=service"
+addopts = "--pspec --cov=service --disable-warnings"
 testpaths = ["tests"]
 
 [tool.coverage.run]
